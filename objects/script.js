@@ -121,3 +121,54 @@ console.log('Object.entries ---->', Object.entries(rectangle))
 
 const triangle = { ...rectangle };
 console.log('triangle', triangle);
+
+const car = {
+  year: 2021,
+  model: 'BMW',
+  showInfo() {
+    console.log(this.year, this.model)
+  }
+}
+
+const user = {
+  name: 'UserName',
+  age: 34,
+  role: 'user',
+  length: function () {
+    return Object.keys(this).length;
+  },
+  checkPermission() {
+    if (this.role === 'admin') {
+      ////
+    } else {
+      //////
+    }
+  }
+}
+
+const admin = Object.assign({}, user);
+admin.role = 'admin';
+
+admin.checkPermission();
+console.log(`user.length()`, user.length())
+
+
+///////
+
+function isNumber(number) {
+  if (typeof number !== 'number') return false
+}
+
+function createUser(age = 34, name = 'User Name', weight = 355) {
+  if (!isNumber(age) || !isNumber(weight)) {
+    return;
+  }
+
+  return {
+    name,
+    age,
+    weight,
+  }
+}
+
+console.log(`createUser()`, createUser('545', '454', '45'))

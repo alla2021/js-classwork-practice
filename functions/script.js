@@ -114,7 +114,7 @@ function findPerfectNumber(min, max) {
 //   return result;
 // }
 
-// const calcFactorial = num => num !== 1 ? num * calcFactorial(num - 1) : num;
+const calcFactorial = num => num !== 1 ? num * calcFactorial(num - 1) : num;
 
 // console.log(calcFactorial(5));
 

@@ -33,7 +33,7 @@ const matrix = [[1, 2, 3], [2, 3, 4], [5, 7, 8]];
 console.log(matrix[1][2])
 
 ///// SPLICE
-// numbers.splice(2, 2)
+numbers.splice(2, 2)
 
 console.log('numbers----->', numbers)
 /// SLICE
@@ -110,18 +110,18 @@ const stingNumbers = arr.map(function (item) {
 })
 
 
-const names = ['ivan', 'kolya', 'piterr', 'mike']
+// const names = ['ivan', 'kolya', 'piterr', 'mike']
 
 console.log(`stingNumbers`, stingNumbers)
 
-const toUpperCase = names.map(item => item.toUpperCase())
+// const toUpperCase = names.map(item => item.toUpperCase())
 
-console.log(`toUpperCase`, toUpperCase)
+// console.log(`toUpperCase`, toUpperCase)
 
 ///// SORT ///////
 const number = [3, 5, 4, 7, 8, 11, 1, 10]
 
-console.log(`number sorted`, number.sort());
+// console.log(`number sorted`, number.sort());
 
 number.sort(function (a, b) {
   if (a > b) {
@@ -135,4 +135,119 @@ number.sort(function (a, b) {
   return 0
 })
 
-console.log(`number`, number)
+// console.log(`number`, number);
+
+///// REDUCE //////
+
+const factorial = [1, 2, 3, 4, 5];
+
+const result = factorial.reduce(function (prev, current, index, array) {
+  return prev + current
+})
+
+console.log(result);
+
+const odd = factorial.some(item => item % 3 === 0);
+
+console.log(`odd`, odd);
+
+const typeNumbers = factorial.every(item => typeof item === 'number')
+console.log(`typeNumbers`, typeNumbers);
+
+////////
+const digits = [1, 2, 3, 4, 5];
+const copy = [...arr];
+console.log(arr)
+
+function addElementByIndex(arr, index, element) {
+  const newArray = arr.slice();
+
+  newArray.splice(index, 0, element);
+
+  return newArray;
+}
+
+
+function removeElementByIndex(arr, index) {
+  ///
+}
+
+removeElementByIndex(digits, 3);
+
+
+
+// const names = ['piter', 'mike', 'john', 'sarah'];
+
+const users = [
+  { name: 'piter', age: 55, admin: true },
+  { name: 'mike', age: 44, admin: false },
+  { name: 'john', age: 22, admin: true },
+  { name: 'sarah', age: 42, admin: false },
+]
+
+const list = [
+  { name: 'apple', count: 22, bought: true },
+  { name: 'orage', count: 2,  bought: false }
+]
+
+
+function sortByBuy(arr) {
+  const newArray = [...arr];
+
+  newArray.sort()
+}
+
+
+function addNewItem(arr, item) {
+  // const newArray = [...arr];
+
+
+  const item = arr.find(el => el.name === item.name);
+
+
+  if () {
+
+  } else {
+    arr.push(item)
+  }
+}
+
+
+function markAsBuy(name) {
+  const item = arr.find(el => el.name === item.name);
+
+  item.bought = true;
+}
+
+checkBuy('apple')
+
+addNewItem(list, {name: 'apple', count: 3})
+
+// const users = [
+//   { name: 'PITER', age: 55, admin: true },
+//   { name: 'MIKE', age: 44, admin: false },
+//   { name: 'john', age: 22, admin: true },
+//   { name: 'sarah', age: 42, admin: false },
+// ]
+
+function toUpperCaseName(arr) {
+  const copyArray = [...arr];
+
+  return copyArray.map(function (item) {
+    return { age: item.age.toString(), admin: item.admin, name: item.name.toUpperCase() }
+  })
+}
+
+
+function calcAverageAge(arr) {
+  const sum = arr.reduce(function (prev, item) {
+    return prev + item.age
+  }, 0)
+
+  return sum / arr.length;
+}
+
+console.log(`calcSumOfAge`, calcAverageAge(users));
+
+
+// console.log('toUpperCaseName', toUpperCaseName(users))
