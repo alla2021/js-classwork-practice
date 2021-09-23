@@ -178,12 +178,12 @@ removeElementByIndex(digits, 3);
 
 // const names = ['piter', 'mike', 'john', 'sarah'];
 
-const users = [
-  { name: 'piter', age: 55, admin: true },
-  { name: 'mike', age: 44, admin: false },
-  { name: 'john', age: 22, admin: true },
-  { name: 'sarah', age: 42, admin: false },
-]
+// const users = [
+//   { name: 'piter', age: 55, admin: true },
+//   { name: 'mike', age: 44, admin: false },
+//   { name: 'john', age: 22, admin: true },
+//   { name: 'sarah', age: 42, admin: false },
+// ]
 
 const list = [
   { name: 'apple', count: 22, bought: true },
@@ -191,37 +191,38 @@ const list = [
 ]
 
 
-function sortByBuy(arr) {
-  const newArray = [...arr];
+// function sortByBuy(arr) {
+//   const newArray = [...arr];
 
-  newArray.sort()
-}
+//   newArray.sort()
+// }
 
+// sortByBuy()
 
 function addNewItem(arr, item) {
   // const newArray = [...arr];
 
 
-  const item = arr.find(el => el.name === item.name);
+  // const item = arr.find(el => el.name === item.name);
 
 
-  if () {
+  // if () {
 
-  } else {
-    arr.push(item)
-  }
+  // } else {
+  //   arr.push(item)
+  // }
 }
 
 
 function markAsBuy(name) {
-  const item = arr.find(el => el.name === item.name);
+  // const item = arr.find(el => el.name === item.name);
 
-  item.bought = true;
+  // item.bought = true;
 }
 
-checkBuy('apple')
+// checkBuy('apple')
 
-addNewItem(list, {name: 'apple', count: 3})
+markAsBuy(list, {name: 'apple', count: 3})
 
 // const users = [
 //   { name: 'PITER', age: 55, admin: true },
@@ -229,6 +230,15 @@ addNewItem(list, {name: 'apple', count: 3})
 //   { name: 'john', age: 22, admin: true },
 //   { name: 'sarah', age: 42, admin: false },
 // ]
+
+const users = [
+  { name: 'piter', age: 55, admin: true },
+  { name: 'mike', age: 44, admin: false },
+  { name: 'john', age: 22, admin: true },
+  { name: 'sarah', age: 42, admin: false },
+]
+
+console.log(`users`, users)
 
 function toUpperCaseName(arr) {
   const copyArray = [...arr];
@@ -238,6 +248,9 @@ function toUpperCaseName(arr) {
   })
 }
 
+toUpperCaseName(users)
+
+console.log(`users`, users)
 
 function calcAverageAge(arr) {
   const sum = arr.reduce(function (prev, item) {
@@ -247,7 +260,72 @@ function calcAverageAge(arr) {
   return sum / arr.length;
 }
 
-console.log(`calcSumOfAge`, calcAverageAge(users));
+// console.log(`calcSumOfAge`, calcAverageAge(users));
 
 
-// console.log('toUpperCaseName', toUpperCaseName(users))
+
+const shoppingList = [
+  { name: 'apple', count: 1, bought: true, price: 55 },
+  { name: 'orange', count: 2, bought: false, price: 22 },
+  { name: 'cherry', count: 1, bought: true, price: 12 },
+  { name: 'banana', count: 4, bought: false , price: 34 },
+]
+
+// function sortByBought() {
+
+// }
+
+// sortByBought(shoppingList);
+
+const apple = { name: 'apple', count: 4, bought: true }
+
+const product = { name: 'apple', count: 1, bought: false }
+const obj = { ...product, ...apple };
+
+console.log(`obj`, obj);
+function addNewProduct(shoppingList, newProduct) {
+  const existingProduct = shoppingList.find(function (item) { /// 1. найти элемент
+    return item.name === newProduct.name
+  })
+
+  if (existingProduct) { // 2. проверка на элемент
+    return shoppingList.map(function (item) {
+      const copy = { ...item };
+
+      return {
+        count: item.count += newProduct.count, /// 3. изменить значение
+        ...copy, // скопировать все свойства с объекта
+      }
+    })
+  } else {
+    shoppingList.push(newProduct) ///4. добавить новый элемент в массив
+  }
+
+  return shoppingList ///5. вернуть новый массив
+}
+
+console.log(`addNewProduct`, addNewProduct(shoppingList, product));
+
+
+function printList(arr) {
+  for (let item of arr) {
+    console.log(`item`, `Product is - ${item.name}; Price is ${name.price}`)
+  }
+}
+
+printList(shoppingList);
+
+
+const auditors = [
+  { faculty: 'bio', count: 343 },
+  { faculty: 'math', count: 343 },
+  { faculty: 'geo', count: 343 },
+  { faculty: 'math',  count: 343},
+]
+
+
+function findByFaculty(arr, faculty) {
+  return auditors.filter(item => item.faculty === faculty.faculty && item.count >= faculty.count )
+}
+
+console.log(`findByFaculty`, findByFaculty(auditors, { faculty: 'bio', count: 343 }))
