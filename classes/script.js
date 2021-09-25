@@ -24,11 +24,11 @@ class Car {
   }
 }
 
-const honda = new Car('honda', 2021, 'Japan', 90, 70);
-const audi = new Car('audi', 2017, 'GE', 180 );
+const b = new Car('honda', 2021, 'Japan', 90, 70);
+const y = new Car('audi', 2017, 'GE', 180 );
 
-honda.getInfo()
-audi.getInfo()
+honda.getInfo();
+audi.getInfo();
 
 console.log(`honda`, honda)
 // console.log(`audi`, audi)
@@ -66,7 +66,12 @@ maz.refuel(500)
 
 console.log(`maz`, maz);
 
-const vehicle = [honda, audi, maz];
+const vehicle = [
+  new Truck('volvo', 2015, 'DT', 300, 65, true, 7000),
+  new Truck('volvo', 2015, 'DT', 300, 65, true, 7000),
+  maz
+];
+
 console.log(`vehicle`, vehicle)
 
 class PrintList {
@@ -81,6 +86,19 @@ class PrintList {
   }
 }
 
-const list = new PrintList(vehicle)
+const printList = new PrintList(vehicle)
 
 list.print()
+
+class Marker {
+  constructor(amount) {
+    this.amount = amount
+  }
+
+  print(value) {}
+
+}
+
+const marker = new Marker('#000', 40);
+
+marker.print('Lorem ipsum dolor sit amet')
