@@ -35,16 +35,23 @@ function renderTaskElement(item) {
     this.closest('.list__item').remove()
   })
 
-  itemText.addEventListener('click', function() {
-    this.style.display = 'none';
-    inputField.style.display = 'block';
-    inputField.value = this.innerText;
+  itemText.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    if (event.ctrlKey && event.code === 'e') {
+      this.style.display = 'none';
+      inputField.style.display = 'block';
+      inputField.value = this.innerText;
+    }
+
   })
 
-  inputField.addEventListener('change', function () {
-    this.style.display = 'none';
-    itemText.innerText = this.value;
-    itemText.style.display = 'block';
+  inputField.addEventListener('change', function (event) {
+    if (event.ctrlKey && event.code === 'NumpadAdd') {
+      this.style.display = 'none';
+      itemText.innerText = this.value;
+      itemText.style.display = 'block';
+    }
   })
 
   return listItem;
@@ -114,35 +121,35 @@ form.addEventListener('submit', function(event) {
   event.preventDefault();
 })
 
-function keyPress() {
-  document.addEventListener('keydown', function (event) {
-    console.log(`event`, event)
-    event.preventDefault();
+// function keyPress() {
+//   document.addEventListener('keydown', function (event) {
+//     console.log(`event`, event)
+//     event.preventDefault();
 
-      // console.log(`event.code`, event.code)
-      if (event.ctrlKey && event.code === 'KeyR') {
-        console.log(`ControlLeft and KeyR`)
-      }
-  })
-}
+//       // console.log(`event.code`, event.code)
+//       if (event.ctrlKey && event.code === 'KeyR') {
+//         console.log(`ControlLeft and KeyR`)
+//       }
+//   })
+// }
 
-keyPress()
+// keyPress()
 
 // document.removeEventListener('keydown', keyPress)
 
-const box = document.querySelector('#box');
+// const box = document.querySelector('#box');
 
-box.addEventListener('mouseenter', function(event) {
-  console.log(event)
+// box.addEventListener('mouseenter', function(event) {
+//   console.log(event)
 
-  const offsetX = event.offsetX;
+//   const offsetX = event.offsetX;
 
 
-  this.addEventListener('mousemove', function() {
-    console.log('Mouse enter and move')
-  })
+//   this.addEventListener('mousemove', function() {
+//     console.log('Mouse enter and move')
+//   })
 
-})
+// })
 
 
 
@@ -243,3 +250,4 @@ box.addEventListener('mouseenter', function(event) {
 //     green.classList.add('is--active');
 //   }
 // })
+
