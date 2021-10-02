@@ -1,0 +1,52 @@
+body {
+  font-family: 'Noto Sans Display', sans-serif;
+  /* scroll-behavior: smooth; */
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.accordion {
+  list-style: none;
+  width: 400px;
+}
+
+
+.accordion__item-title {
+  margin: 0;
+}
+
+
+.accordion__item-title,
+.accordion__item-content {
+  padding: 24px;
+}
+
+.accordion__item-content  {
+  display: none;
+}
+
+.accordion__item {
+  background-color: #f4ce74;
+  cursor: pointer;
+}
+
+.location {
+  background-color: #620808;
+}
+
+.music {
+  background-color: #a53f3f;
+}
+
+.notes {
+  background-color: #f4ce74;
+}
+
+.books {
+  background-color: #ffe9c1;
+}
+
+.tendaces {
+  background-color: #d5441c;
+}
