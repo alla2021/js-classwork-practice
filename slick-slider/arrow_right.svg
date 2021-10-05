@@ -1,0 +1,14 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 42" width="23" height="42">
+	<title>Hero slider</title>
+	<defs>
+		<image  width="23" height="42" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAqCAMAAABvEDDhAAAAAXNSR0IB2cksfwAAAJlQTFRF////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////SLD2LwAAADN0Uk5TWdibBQDj/6qsBhG9pQMOocASxQITmJbKGs4ZjdTNkg3DpA/EBKkKurOrtAmtCLfna9+ueLkXfwAAANNJREFUeJxt0ttawkAMhdEA2ykVrXLSegC1QjmD+v4P56R8dEKSuVz/3ewQdbo92Ec3IWROoH6IIbd+O4jh7t44Cg4POhD8EN0N7CgeTWgcwxGHsXFMOEytn8OTdR1aVyE5Js8iCEf5koJ0vHJ4sy7CtaegvA3aUb43wTjKWQxz6x+f0b+MV9/8tQvtl43IZ+VpUfL5yivm5Xlm4fVKnF7yeh3EqZLPrSu+eMMbce+UeLuD8nzPXEN5nhlm9zi6y6AD81EzqBt5UGgGnVwG/fz+OYx/c0kaMS986wQAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Hero slider">
+		<g id="arrows">
+			<use id="arrow_right" href="#img1" x="0" y="0" />
+		</g>
+	</g>
+</svg>
