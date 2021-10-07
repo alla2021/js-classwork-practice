@@ -23,13 +23,11 @@ function renderList(data) {
   }
 }
 
-
 // function showError(error) {
 //   alert(`Error: ${error.name}`)
 // }
 
 // makeRequest()
-
 
 const API_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '045fa3048d68107b3e16130861ad8e7a';
@@ -43,9 +41,12 @@ function makeMovieRequest(path) {
       return response.json()
     }).then(function (data) {
 
-      if (data.results) {
-        renderList(data.results)
+      for (let i = 0; i < data.total_pages; i++) {
+        makeSearch('avatar', i)
       }
+      // if (data.results) {
+      //   renderList(data.results)
+      // }
   })
 }
 
@@ -63,13 +64,13 @@ fetchLates()
 
 // https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
 
-function makeSearch(query) {
-  fetch(`${API_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+function makeSearch(query, page) {
+  fetch(`${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`)
 }
 
 // makeSearch('avatar')
 
 
 document.querySelector('#button').addEventListener('click', function () {
-  makeSearch('avatar')
+  makeSearch('avatar', 4)
 });

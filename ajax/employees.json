@@ -49,6 +49,6 @@
   },
   {
    "name": "Zac",
-   "inoffice": false
+   "inoffice": [434, true]
   }
 ]
