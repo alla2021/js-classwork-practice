@@ -1,27 +1,75 @@
-function makeRequest() {
-  fetch('https://jsonplaceholder.typicode.com/todos')
-  .then(function (response) {
-    return response.json()
-  })
-    .then(function (data) {
-      renderList(data)
-  })
-  .catch(function(error) {
-    showError(error)
-  })
-}
+// function makeRequest() {
+//   fetch('https://jsonplaceholder.typicode.com/todos')
+//     .then(response => {
+//       if (response.ok && response.status === 200) {
+//         return response.json()
+//       } else {
+//         alert('Error')
+//       }
+//   })
+//   .then(function (data) {
+//     renderList(data)
+//   })
+//   .catch(function(error) {
+//     showError(error)
+//   })
+// }
 
 function renderList(data) {
   const list = document.querySelector('#list');
 
   for (let item of data) {
-    list.insertAdjacentHTML('afterbegin', `<li>Name: ${item.title}; Inoffice: ${item.inoffice}</li>`)
+    list.insertAdjacentHTML('afterbegin', `<li>Name: ${item.title};`)
   }
 }
 
 
-function showError(error) {
-  alert(`Error: ${error.name}`)
+// function showError(error) {
+//   alert(`Error: ${error.name}`)
+// }
+
+// makeRequest()
+
+
+const API_URL = 'https://api.themoviedb.org/3';
+const API_KEY = '045fa3048d68107b3e16130861ad8e7a';
+
+// https://api.themoviedb.org/3/movie/550?api_key=045fa3048d68107b3e16130861ad8e7a
+
+
+function makeMovieRequest(path) {
+  fetch(`${API_URL}/movie/${path}?api_key=${API_KEY}&page=2`)
+    .then(function (response) {
+      return response.json()
+    }).then(function (data) {
+
+      if (data.results) {
+        renderList(data.results)
+      }
+  })
 }
 
-makeRequest()
+function fetchPopular() {
+  makeMovieRequest('popular')
+}
+
+function fetchLates() {
+  makeMovieRequest('latest')
+}
+
+
+fetchPopular()
+fetchLates()
+
+// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+
+function makeSearch(query) {
+  fetch(`${API_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+}
+
+// makeSearch('avatar')
+
+
+document.querySelector('#button').addEventListener('click', function () {
+  makeSearch('avatar')
+});
