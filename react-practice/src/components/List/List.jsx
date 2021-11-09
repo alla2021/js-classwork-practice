@@ -1,27 +1,31 @@
 import React from 'react';
 
-class UserCard extends React.Component {
-  render() {
-    const { firstName, lastName, age } = this.props;
-
-    return (
-      <li>
-        Name: {firstName}
-        <br />
-        Last Name: {lastName}
-        <br />
-        Age: {age}
-        <br />
-      </li>
-    );
-  }
-}
+const UserList = ({ users, click, posts }) => {
+  console.log('posts :>> ', posts);
+  return (
+    <div style={{ display: 'flex' }}>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id} onClick={() => click(user.id)}>
+            Name: {user.name}
+          </li>
+        ))}
+      </ul>
+      <div>
+        {posts.map((post) => (
+          <li key={post.id}>{post.body}</li>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 class List extends React.Component {
   constructor() {
     super();
     this.state = {
       users: [],
+      posts: [],
     };
     this.fetchUsers();
   }
@@ -32,22 +36,22 @@ class List extends React.Component {
       .then((data) => this.setState({ users: data }));
   }
 
+  getPostsByUserId(id) {
+    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+      .then((response) => response.json())
+      .then((posts) => this.setState({ posts }));
+  }
+
   render() {
-    // const { users } = this.props;
-    const { users } = this.state;
+    const { users, posts } = this.state;
 
     return (
       users.lenght !== 0 && (
-        <ul>
-          {/* {users.map((item) => (
-            <UserCard key={item.firstName} {...item} />
-          ))} */}
-          {users.map(({ id, name, email }) => (
-            <li key={id}>
-              Name: {name}; Email: {email}
-            </li>
-          ))}
-        </ul>
+        <UserList
+          users={users}
+          posts={posts}
+          click={(id) => this.getPostsByUserId(id)}
+        />
       )
     );
   }
