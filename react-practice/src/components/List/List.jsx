@@ -1,24 +1,38 @@
 import React from 'react';
 
-const UserList = ({ users, click, posts }) => {
-  console.log('posts :>> ', posts);
-  return (
-    <div style={{ display: 'flex' }}>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id} onClick={() => click(user.id)}>
-            Name: {user.name}
-          </li>
-        ))}
-      </ul>
-      <div>
-        {posts.map((post) => (
-          <li key={post.id}>{post.body}</li>
-        ))}
+class UserList extends React.PureComponent {
+  constructor(params) {
+    super();
+    this.state = {
+      posts: [],
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prevProps :>> ', prevProps);
+    console.log('prevState :>> ', prevState);
+  }
+
+  render() {
+    const { users, click, posts } = this.props;
+    return (
+      <div style={{ display: 'flex' }}>
+        <ul>
+          {users.map((user) => (
+            <li key={user.id} onClick={() => click(user.id)}>
+              Name: {user.name}
+            </li>
+          ))}
+        </ul>
+        <div>
+          {posts.map((post) => (
+            <li key={post.id}>{post.body}</li>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 class List extends React.Component {
   constructor() {
@@ -27,13 +41,13 @@ class List extends React.Component {
       users: [],
       posts: [],
     };
-    this.fetchUsers();
   }
 
-  fetchUsers() {
+  componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
-      .then((data) => this.setState({ users: data }));
+      .then((data) => this.setState({ users: data }))
+      .catch((error) => console.log('error :>> ', error));
   }
 
   getPostsByUserId(id) {
