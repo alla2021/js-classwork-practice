@@ -1,7 +1,7 @@
 import React from 'react';
 import './button.scss';
 
-const Button = ({ isActive, isDisabled, type, text, ...props }) => {
+const Button = ({ isActive, isDisabled, type, text, children, ...props }) => {
   console.log('props :>> ', props);
   return (
     <button
@@ -10,7 +10,7 @@ const Button = ({ isActive, isDisabled, type, text, ...props }) => {
       className={`${isActive ? 'is--active' : ''} main-btn`}
       {...props}
     >
-      {text || 'Default text'}
+      {children || 'Default text'}
     </button>
   );
 };
