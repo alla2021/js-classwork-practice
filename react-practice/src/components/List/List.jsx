@@ -50,6 +50,8 @@ class List extends React.Component {
       .catch((error) => console.log('error :>> ', error));
   }
 
+  componentWillUnmount() {}
+
   getPostsByUserId(id) {
     fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
       .then((response) => response.json())
